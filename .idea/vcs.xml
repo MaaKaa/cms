@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_1/WAR_JEE_W_06_Exam_1_Marzena" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_1/WAR_JEE_W_06_Exam_1_Marzena/Egzamin/WAR_JEE_W_06_Exam_1_Marzena" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_1/WAR_JEE_W_06_Exam_1_Marzena/Egzamin_poprawa/WAR_JEE_W_06_Exam_1_Marzena_Poprawa" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_1/WAR_JEE_W_06_Podstawy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_2/Egzamin/WAR_JEE_W_06_Exam_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_2/OOP/WAR_JEE_W_06_OOP" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_2/Warsztaty/szkola_programowania" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_2/mySQL/WAR_JEE_W_06_MySQL" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modul_3/WAR_JEE_W_06_Servlety" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Prework/WAR_JEE_W_05_Prework_HTML" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Prework/WAR_JEE_W_05_Prework_Java" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Prework/WAR_JEE_W_06_Prework_HTML" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Prework/WAR_JEE_W_06_Prework_Java" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Prework/WAR_JEE_W_06_Prework_Java_2" vcs="Git" />
+  </component>
+</project>
