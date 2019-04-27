@@ -1,5 +1,7 @@
 package pl.marzenakaa.Author;
 
+import pl.marzenakaa.Article.Article;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,10 @@ public class Author {
     private String firstName;
 
     private String lastName;
+
+    /*@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "article_id")
+    private Article article;*/
 
     public Author() {
     }
