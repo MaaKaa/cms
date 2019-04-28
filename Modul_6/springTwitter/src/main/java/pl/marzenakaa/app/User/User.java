@@ -30,7 +30,6 @@ public class User {
     @Email
     private String email;
 
-    //dodać setter dodający tweety do listy
     @OneToMany(mappedBy = "user")
     private List<Tweet> tweets = new ArrayList<>();
 
@@ -57,6 +56,10 @@ public class User {
         return email;
     }
 
+    public List<Tweet> getTweets() {
+        return tweets;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,5 +78,9 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setTweets(List<Tweet> tweets) {
+        this.tweets = tweets;
     }
 }

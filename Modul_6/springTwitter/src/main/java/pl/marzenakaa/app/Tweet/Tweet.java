@@ -59,7 +59,9 @@ public class Tweet {
         this.created = created;
     }
 
+    //DO SPRAWDZENIA, czy dobrze działa
     public void setUser(User user) {
         this.user = user;
+        user.getTweets().add(this);
     }
 }
