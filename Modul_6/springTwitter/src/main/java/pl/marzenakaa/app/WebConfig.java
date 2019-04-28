@@ -92,12 +92,13 @@ public class WebConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/spring-twitter?useSSL=false");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/spring_twitter?useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("coderslab");
         return dataSource;
     }
 
+    //https://www.baeldung.com/spring-security-registration-password-encoding-bcrypt
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
