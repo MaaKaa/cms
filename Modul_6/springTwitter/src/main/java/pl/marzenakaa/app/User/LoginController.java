@@ -27,7 +27,7 @@ public class LoginController {
         return "register-form";
     }
 
-    //Dodać komunikat o tym, że użytkownik został poprawnie zapisany do bazy:
+    //Dodać widok z komunikatem o tym, że użytkownik został poprawnie zapisany do bazy:
     @PostMapping("/register")
     public String processRegisterForm(@ModelAttribute ("user") @Valid User user, BindingResult result){
         if (result.hasErrors()) {

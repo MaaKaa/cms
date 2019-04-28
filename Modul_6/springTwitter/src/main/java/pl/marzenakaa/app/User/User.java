@@ -1,9 +1,12 @@
 package pl.marzenakaa.app.User;
 
 import org.hibernate.validator.constraints.Email;
+import pl.marzenakaa.app.Tweet.Tweet;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -22,9 +25,14 @@ public class User {
     @NotNull
     private String password;
 
+    @Column(unique = true)
     @NotNull
     @Email
     private String email;
+
+    //dodać setter dodający tweety do listy
+    @OneToMany(mappedBy = "user")
+    private List<Tweet> tweets = new ArrayList<>();
 
     public User() {
     }
