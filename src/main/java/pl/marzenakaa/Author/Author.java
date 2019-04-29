@@ -21,10 +21,15 @@ public class Author {
     @JoinColumn(name = "article_id")
     private Article article;*/
 
-    @OneToMany
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles = new ArrayList<>();
 
     public Author() {
+    }
+
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -41,6 +46,16 @@ public class Author {
 
     public List<Article> getArticles() {
         return articles;
+    }
+
+    public void addArticle(Article article){
+        articles.add(article);
+        article.setAuthor(this);
+    }
+
+    public void removeArticle(Article article){
+        articles.remove(article);
+        article.setAuthor(null);
     }
 
     public void setId(Long id) {

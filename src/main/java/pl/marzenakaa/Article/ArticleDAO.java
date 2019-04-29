@@ -2,6 +2,7 @@ package pl.marzenakaa.Article;
 
 import org.springframework.stereotype.Repository;
 import pl.marzenakaa.Author.Author;
+import pl.marzenakaa.Category.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,4 +33,5 @@ public class ArticleDAO {
         List<Article> articles = query.getResultList();
         return articles;
     }
+
 }

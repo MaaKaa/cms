@@ -1,8 +1,12 @@
 package pl.marzenakaa.Category;
 
+import pl.marzenakaa.Article.Article;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="categories")
@@ -17,7 +21,15 @@ public class Category {
 
     private String description;
 
+    @ManyToMany(mappedBy = "categories", fetch=FetchType.EAGER)
+    private List<Article> articles = new ArrayList<>();
+
     public Category() {
+    }
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public Long getId() {
@@ -32,6 +44,10 @@ public class Category {
         return description;
     }
 
+    public List<Article> getArticles() {
+        return articles;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -42,6 +58,10 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     @Override

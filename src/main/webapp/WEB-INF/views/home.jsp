@@ -38,6 +38,25 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>Categories:</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Show articles</th>
+            </tr>
+            </thead>
+            <c:forEach items="${categories}" var="categories">
+                <tr>
+                    <td>${categories.id}</td>
+                    <td>${categories.name}</td>
+                    <td>${categories.description}</td>
+                    <td><a href="/categories/articles/">Show articles</a> </td><!-- Link trzeba poprawić -->
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </body>
 </html>

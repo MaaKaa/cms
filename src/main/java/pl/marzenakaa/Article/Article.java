@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="articles")
@@ -20,9 +21,10 @@ public class Article {
     private String title;
 
     @ManyToOne
+    @JoinColumn(name = "author_id")//można przetestować bez tego
     private Author author;
 
-    @OneToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
 
     private String content;
@@ -41,6 +43,15 @@ public class Article {
         updated = LocalDateTime.now();
     }
 
+    public Article() {
+    }
+
+    public Article(String title, Author author, String content) {
+        this.title = title;
+        this.author = author;
+        this.content = content;
+    }
+
     public Long getId() {
         return id;
     }
@@ -55,6 +66,16 @@ public class Article {
 
     public List<Category> getCategories() {
         return categories;
+    }
+
+    public void addCategory(Category category){
+        categories.add(category);
+        category.getArticles().add(this);
+    }
+
+    public void removeCategory(Category category){
+        categories.remove(category);
+        category.getArticles().remove(this);
     }
 
     public String getContent() {
@@ -79,7 +100,6 @@ public class Article {
 
     public void setAuthor(Author author) {
         this.author = author;
-        author.getArticles().add(this);
     }
 
     public void setCategories(List<Category> categories) {
@@ -97,4 +117,5 @@ public class Article {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
 }
