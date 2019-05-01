@@ -25,16 +25,15 @@
             <th scope="col">Content</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
-        </tr>
         </thead>
-        <c:forEach items="${articlesByCategory}" var="articlesByCategory">
+        <c:forEach items="${articlesByCategory}" var="article">
             <tr>
-                <td>${articlesByCategory.id}</td>
-                <td>${articlesByCategory.title}</td>
-                <td>${articlesByCategory.author.firstName} ${articlesByCategory.author.lastName}</td>
-                <td>${articlesByCategory.content}</td>
-                <td>${articlesByCategory.created}</td>
-                <td>${articlesByCategory.updated}</td>
+                <td>${article.id}</td>
+                <td>${article.title}</td>
+                <td>${article.author.firstName} ${article.author.lastName}</td>
+                <td>${article.content}</td>
+                <td>${article.created}</td>
+                <td>${article.updated}</td>
             </tr>
         </c:forEach>
 </div>

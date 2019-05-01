@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <html>
 <head>
@@ -25,16 +26,19 @@
                 <th scope="col">Content</th>
                 <th scope="col">Created</th>
                 <th scope="col">Updated</th>
+                <th scope="col">Categories</th>
             </tr>
             </thead>
-            <c:forEach items="${latestArticles}" var="latestArticles">
+            <c:forEach items="${latestArticles}" var="latestArticle">
                 <tr>
-                    <td>${latestArticles.id}</td>
-                    <td>${latestArticles.title}</td>
-                    <td>${latestArticles.author.firstName} ${latestArticles.author.lastName}</td>
-                    <td>${latestArticles.content}</td>
-                    <td>${latestArticles.created}</td>
-                    <td>${latestArticles.updated}</td>
+                    <td>${latestArticle.id}</td>
+                    <td>${latestArticle.title}</td>
+                    <td>${latestArticle.author.firstName} ${latestArticle.author.lastName}</td>
+                    <td><c:set var="content" value="${latestArticle.content}"/>
+                        ${fn:substring(content, 0, 200)}</td>
+                    <td>${latestArticle.created}</td>
+                    <td>${latestArticle.updated}</td>
+                    <td>${latestArticle.categories}</td>
                 </tr>
             </c:forEach>
         </table>
@@ -48,12 +52,12 @@
                 <th scope="col">Show articles</th>
             </tr>
             </thead>
-            <c:forEach items="${categories}" var="categories">
+            <c:forEach items="${categories}" var="category">
                 <tr>
-                    <td>${categories.id}</td>
-                    <td>${categories.name}</td>
-                    <td>${categories.description}</td>
-                    <td><a href="/categories/articles/">Show articles</a> </td><!-- Link trzeba poprawić -->
+                    <td>${category.id}</td>
+                    <td>${category.name}</td>
+                    <td>${category.description}</td>
+                    <td><a href="/categories/${category.id}">Show articles</a> </td>
                 </tr>
             </c:forEach>
         </table>

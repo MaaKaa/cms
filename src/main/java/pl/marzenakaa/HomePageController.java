@@ -13,7 +13,6 @@ import pl.marzenakaa.Article.ArticleDAO;
 import pl.marzenakaa.Category.Category;
 import pl.marzenakaa.Category.CategoryDAO;
 
-import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
@@ -41,10 +40,9 @@ public class HomePageController {
         return categories;
     }
 
-    //DO POPRAWIENIA: Nie wyświetla wszystkich artykułów (tylko 1):
-    @GetMapping("/categories/{name}")
-    public String showArticlesByCategory(@PathVariable String name, Model model){
-        Category category = categoryDAO.findByName(name);
+    @GetMapping("/categories/{id}")
+    public String showArticlesByCategory(@PathVariable Long id, Model model){
+        Category category = categoryDAO.findById(id);
         List<Article> articlesByCategory = category.getArticles();
         Hibernate.initialize(articlesByCategory);
         model.addAttribute("articlesByCategory",articlesByCategory);
