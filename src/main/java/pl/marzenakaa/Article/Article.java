@@ -7,7 +7,6 @@ import pl.marzenakaa.Category.Category;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +29,8 @@ public class Article {
 
     @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Category> categories;
+
+    private boolean draft;
 
     private LocalDateTime created;
 
@@ -76,6 +77,10 @@ public class Article {
         return updated;
     }
 
+    public boolean isDraft() {
+        return draft;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -102,6 +107,10 @@ public class Article {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public void setDraft(boolean draft) {
+        this.draft = draft;
     }
 
     public void addCategory(Category category){

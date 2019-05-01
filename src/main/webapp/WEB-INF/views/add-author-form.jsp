@@ -20,7 +20,7 @@
         <form:input path="lastName" /><br>
         <form:errors path="lastName" cssClass="text-danger"/><br>
 
-        <input type="submit" value="save"><br>
+        <input type="submit" value="Save"><br>
     </form:form>
 
     <a href="<c:url value="all"/>">Show all Authors</a><br>

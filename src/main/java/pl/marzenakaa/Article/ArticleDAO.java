@@ -28,17 +28,24 @@ public class ArticleDAO {
         return entityManager.find(Article.class, id);
     }
 
+    public List<Article> findAll(){
+        Query query = entityManager.createQuery("SELECT a FROM Article a");
+        List<Article> articles = query.getResultList();
+        return articles;
+    }
+
     public List<Article> findLatest(int number){
         Query query = entityManager.createQuery("SELECT a FROM Article a order by created desc").setMaxResults(number);
         List<Article> articles = query.getResultList();
         return articles;
     }
 
-    public List<Article> findAll(){
-        Query query = entityManager.createQuery("SELECT a FROM Article a");
-        List<Article> articles = query.getResultList();
-        return articles;
+    public List<Article> findDrafts(){
+        Query query = entityManager.createQuery("SELECT a FROM Article a WHERE draft=true");
+        List<Article> drafts = query.getResultList();
+        return drafts;
     }
+
 
     public void remove(long id) {
         Article article = findById(id);

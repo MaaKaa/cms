@@ -21,7 +21,7 @@
         <form:input path="description" /><br>
         <form:errors path="description" cssClass="text-danger"/><br>
 
-        <input type="submit" value="save"><br>
+        <input type="submit" value="Save"><br>
     </form:form>
 
     <a href="<c:url value="all"/>">Show all Categories</a><br>

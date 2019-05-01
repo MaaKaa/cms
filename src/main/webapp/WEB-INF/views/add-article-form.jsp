@@ -25,11 +25,13 @@
             <form:options items="${authors}" itemLabel="lastName" itemValue="id"/>
         </form:select><br>
 
-        <!-- pole z możliwością wyboru wielu kategorii. Nie działa: po zaznaczeniu checkboxa artykuł nie zapisuje się w bazie. -->
         Choose category:
-        <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"/>
+        <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"/><br>
 
-        <input type="submit" value="save"><br>
+        Save as a draft:
+        <form:checkbox path="draft" value="true"/><br>
+
+        <input type="submit" value="Save"><br>
     </form:form>
 
     <a href="<c:url value="all"/>">Show all articles</a><br>

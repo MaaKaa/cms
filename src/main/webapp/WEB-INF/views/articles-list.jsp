@@ -37,6 +37,33 @@
             </tr>
         </c:forEach>
     </table>
+    <h2>Drafts:</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Author(s)</th>
+            <th scope="col">Categories</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <c:forEach items="${drafts}" var="draft">
+            <tr>
+                <td>${draft.id}</td>
+                <td>${draft.title}</td>
+                <td>${draft.content}</td>
+                <td>${draft.created}</td>
+                <td>${draft.updated}</td>
+                <td>${draft.author}</td>
+                <td>${draft.categories}</td>
+                <td><a href="edit/${draft.id}">Edit</a> <a href="delete/${draft.id}">Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
     <a href="<c:url value="add"/>">Add Article</a><br>
     <a href="<c:url value="http://localhost:8080/"/>">Home</a><br>
 </div>

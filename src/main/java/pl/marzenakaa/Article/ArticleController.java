@@ -83,4 +83,10 @@ public class ArticleController {
         return categories;
     }
 
+    @ModelAttribute("drafts")
+    public List<Article> showDrafts(){
+        List<Article> drafts = articleDAO.findDrafts();
+        return drafts;
+    }
+
 }
