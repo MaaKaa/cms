@@ -9,7 +9,7 @@ The app allows user to:
     • Display, create, edit, delete Articles,
     • Save articles as drafts, display the list of drafts.
     
-It implements both DAO classes and repositories.
+It contains both DAO classes and repositories (but actually only the repositories are in use).
 
 ***
 USED TOOLS/FRAMEWORKS:
