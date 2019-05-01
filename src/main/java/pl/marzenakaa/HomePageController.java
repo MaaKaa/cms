@@ -1,6 +1,5 @@
 package pl.marzenakaa;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,8 @@ import pl.marzenakaa.Article.Article;
 import pl.marzenakaa.Article.ArticleDAO;
 import pl.marzenakaa.Category.Category;
 import pl.marzenakaa.Category.CategoryDAO;
+import pl.marzenakaa.repository.ArticleRepository;
+import pl.marzenakaa.repository.CategoryRepository;
 
 import java.util.List;
 
@@ -19,14 +20,14 @@ import java.util.List;
 public class HomePageController {
 
     @Autowired
-    private ArticleDAO articleDAO;
+    ArticleRepository articleRepository;
 
     @Autowired
-    private CategoryDAO categoryDAO;
+    CategoryRepository categoryRepository;
 
     @GetMapping("/")
     private String showLatestArticles(Model model){
-        List<Article> latestArticles = articleDAO.findLatest(5);
+        List<Article> latestArticles = articleRepository.findLatestArticles();
         Hibernate.initialize(latestArticles);
         model.addAttribute("latestArticles", latestArticles);
         return "home";
@@ -34,7 +35,7 @@ public class HomePageController {
 
     @ModelAttribute("categories")
     public List<Category> showCategories(Model model){
-        List<Category> categories = categoryDAO.findAll();
+        List<Category> categories = categoryRepository.findAll();
         Hibernate.initialize(categories);
         model.addAttribute("categories", categories);
         return categories;
@@ -42,7 +43,7 @@ public class HomePageController {
 
     @GetMapping("/categories/{id}")
     public String showArticlesByCategory(@PathVariable Long id, Model model){
-        Category category = categoryDAO.findById(id);
+        Category category = categoryRepository.findOne(id);
         List<Article> articlesByCategory = category.getArticles();
         Hibernate.initialize(articlesByCategory);
         model.addAttribute("articlesByCategory",articlesByCategory);

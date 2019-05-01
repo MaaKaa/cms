@@ -34,6 +34,7 @@ import java.util.Properties;
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.marzenakaa")
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "pl.marzenakaa.repository")
 public class WebConfig implements WebMvcConfigurer {
     @Bean
     public ViewResolver internalResourceViewResolver() {

@@ -10,6 +10,9 @@ import pl.marzenakaa.Author.Author;
 import pl.marzenakaa.Author.AuthorDAO;
 import pl.marzenakaa.Category.Category;
 import pl.marzenakaa.Category.CategoryDAO;
+import pl.marzenakaa.repository.ArticleRepository;
+import pl.marzenakaa.repository.AuthorRepository;
+import pl.marzenakaa.repository.CategoryRepository;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,18 +20,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/articles")
 public class ArticleController {
-    @Autowired
-    ArticleDAO articleDAO;
 
     @Autowired
-    AuthorDAO authorDAO;
+    ArticleRepository articleRepository;
 
     @Autowired
-    CategoryDAO categoryDAO;
+    AuthorRepository authorRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @GetMapping("/all")
     public String showArticlesList(Model model){
-        List<Article> articles = articleDAO.findAll();
+        List<Article> articles = articleRepository.findAll();
         Hibernate.initialize(articles);
         model.addAttribute("articles", articles);
         return "articles-list";
@@ -45,13 +49,13 @@ public class ArticleController {
         if (result.hasErrors()) {
             return "add-article-form";
         }
-        articleDAO.save(article);
+        articleRepository.save(article);
         return "redirect:all";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditArticleForm(@PathVariable Long id, Model model) {
-        Article article = articleDAO.findById(id);
+        Article article = articleRepository.findOne(id);
         model.addAttribute("article", article);
         return "add-article-form";
     }
@@ -61,31 +65,31 @@ public class ArticleController {
         if (result.hasErrors()) {
             return "add-article-form";
         }
-        articleDAO.edit(article);
+        articleRepository.save(article);
         return "redirect:/articles/all";
     }
 
     @GetMapping("/delete/{id}")
     public String processDeleteArticle(@PathVariable Long id) {
-        articleDAO.remove(id);
+        articleRepository.delete(id);
         return "redirect:/articles/all";
     }
 
     @ModelAttribute("authors")
     public List<Author> showAuthors(){
-        List<Author> authors = authorDAO.findAll();
+        List<Author> authors = authorRepository.findAll();
         return authors;
     }
 
     @ModelAttribute("categories")
     public List<Category> showCategories(){
-        List<Category> categories = categoryDAO.findAll();
+        List<Category> categories = categoryRepository.findAll();
         return categories;
     }
 
     @ModelAttribute("drafts")
     public List<Article> showDrafts(){
-        List<Article> drafts = articleDAO.findDrafts();
+        List<Article> drafts = articleRepository.findDrafts();
         return drafts;
     }
 

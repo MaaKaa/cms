@@ -8,11 +8,49 @@
     <title>Home</title>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Books</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles/all">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="authors/all">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories/all">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Full Page Image Header with Vertically Centered Content -->
+    <header class="masthead">
+        <div class="container h-10">
+            <div class="row h-50 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="font-weight-light">CMS</h1>
+                    <p class="lead">Manage your content</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <h2>Manu:</h2>
-        <a href="<c:url value="articles/all"/>">Articles</a><br>
-        <a href="<c:url value="authors/all"/>">Authors</a><br>
-        <a href="<c:url value="categories/all"/>">Categories</a><br>
         <h2>Latest articles:</h2>
         <table class="table">
             <thead>

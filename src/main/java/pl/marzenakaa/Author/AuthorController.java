@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.marzenakaa.repository.AuthorRepository;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,12 +14,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/authors")
 public class AuthorController {
+
     @Autowired
-    AuthorDAO authorDAO;
+    AuthorRepository authorRepository;
 
     @GetMapping("/all")
     public String showAuthorsList(Model model){
-        List<Author> authors = authorDAO.findAll();
+        List<Author> authors = authorRepository.findAll();
         Hibernate.initialize(authors);
         model.addAttribute("authors", authors);
         return "authors-list";
@@ -35,13 +37,13 @@ public class AuthorController {
         if (result.hasErrors()) {
             return "add-author-form";
         }
-        authorDAO.save(author);
+        authorRepository.save(author);
         return "redirect:all";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditAuthorForm(@PathVariable Long id, Model model) {
-        Author author = authorDAO.findById(id);
+        Author author = authorRepository.findOne(id);
         model.addAttribute("author", author);
         return "add-author-form";
     }
@@ -51,13 +53,13 @@ public class AuthorController {
         if (result.hasErrors()) {
             return "add-author-form";
         }
-        authorDAO.edit(author);
+        authorRepository.save(author);
         return "redirect:/authors/all";
     }
 
     @GetMapping("/delete/{id}")
     public String processDeleteAuthor(@PathVariable Long id) {
-        authorDAO.remove(id);
+        authorRepository.delete(id);
         return "redirect:/authors/all";
     }
 
