@@ -24,7 +24,8 @@
         <input type="submit" value="save"><br>
     </form:form>
 
-    <a href="<c:url value="all"/>">Show all categories</a><br>
+    <a href="<c:url value="all"/>">Show all Categories</a><br>
+    <a href="<c:url value="http://localhost:8080/"/>">Home</a><br>
 </div>
 
 </body>

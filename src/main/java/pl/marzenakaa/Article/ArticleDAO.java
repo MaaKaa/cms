@@ -40,8 +40,11 @@ public class ArticleDAO {
         return articles;
     }
 
-    public void remove(Article entity){
-        entityManager.remove(entity);
-    }
+    public void remove(long id) {
+        Article article = findById(id);
+        if (article != null) {
+            entityManager.remove(article);
+        }
 
+    }
 }

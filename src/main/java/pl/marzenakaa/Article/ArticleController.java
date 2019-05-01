@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.marzenakaa.Author.Author;
 import pl.marzenakaa.Author.AuthorDAO;
+import pl.marzenakaa.Category.Category;
+import pl.marzenakaa.Category.CategoryDAO;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -20,6 +22,9 @@ public class ArticleController {
 
     @Autowired
     AuthorDAO authorDAO;
+
+    @Autowired
+    CategoryDAO categoryDAO;
 
     @GetMapping("/all")
     public String showArticlesList(Model model){
@@ -62,15 +67,20 @@ public class ArticleController {
 
     @GetMapping("/delete/{id}")
     public String processDeleteArticle(@PathVariable Long id) {
-        Article article = articleDAO.findById(id);
-        articleDAO.remove(article);
-        return "redirect:/artciles/all";
+        articleDAO.remove(id);
+        return "redirect:/articles/all";
     }
 
     @ModelAttribute("authors")
     public List<Author> showAuthors(){
         List<Author> authors = authorDAO.findAll();
         return authors;
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> showCategories(){
+        List<Category> categories = categoryDAO.findAll();
+        return categories;
     }
 
 }

@@ -1,6 +1,7 @@
 package pl.marzenakaa.Author;
 
 import org.springframework.stereotype.Repository;
+import pl.marzenakaa.Article.Article;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,7 +33,10 @@ public class AuthorDAO {
         return authors;
     }
 
-    public void remove(Author entity){
-        entityManager.remove(entity);
+    public void remove(long id) {
+        Author author = findById(id);
+        if (author != null) {
+            entityManager.remove(author);
+        }
     }
 }

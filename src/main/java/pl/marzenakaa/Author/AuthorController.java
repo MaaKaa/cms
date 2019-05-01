@@ -57,8 +57,7 @@ public class AuthorController {
 
     @GetMapping("/delete/{id}")
     public String processDeleteAuthor(@PathVariable Long id) {
-        Author author = authorDAO.findById(id);
-        authorDAO.remove(author);
+        authorDAO.remove(id);
         return "redirect:/authors/all";
     }
 

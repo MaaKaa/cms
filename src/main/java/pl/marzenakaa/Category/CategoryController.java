@@ -58,8 +58,7 @@ public class CategoryController {
 
     @GetMapping("/delete/{id}")
     public String processDeleteCategory(@PathVariable Long id) {
-        Category category = categoryDAO.findById(id);
-        categoryDAO.remove(category);
+        categoryDAO.remove(id);
         return "redirect:/categories/all";
     }
 }

@@ -28,8 +28,8 @@ public class Article {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
-    private List<Category> categories = new ArrayList<>(); //czy tu trzeba inicjalizować listę?
+    @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    private List<Category> categories;
 
     private LocalDateTime created;
 

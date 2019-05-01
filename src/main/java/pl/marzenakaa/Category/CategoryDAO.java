@@ -40,7 +40,10 @@ public class CategoryDAO {
         return category;
     }
 
-    public void remove(Category entity){
-        entityManager.remove(entity);
+    public void remove(long id) {
+        Category category = findById(id);
+        if (category != null) {
+            entityManager.remove(category);
+        }
     }
 }

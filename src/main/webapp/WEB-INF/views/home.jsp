@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maakaa
-  Date: 27.04.19
-  Time: 21:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -16,16 +9,20 @@
 </head>
 <body>
     <div class="container">
+        <h2>Manu:</h2>
+        <a href="<c:url value="articles/all"/>">Articles</a><br>
+        <a href="<c:url value="authors/all"/>">Authors</a><br>
+        <a href="<c:url value="categories/all"/>">Categories</a><br>
         <h2>Latest articles:</h2>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Author</th>
                 <th scope="col">Content</th>
                 <th scope="col">Created</th>
                 <th scope="col">Updated</th>
+                <th scope="col">Author</th>
                 <th scope="col">Categories</th>
             </tr>
             </thead>
@@ -33,15 +30,16 @@
                 <tr>
                     <td>${latestArticle.id}</td>
                     <td>${latestArticle.title}</td>
-                    <td>${latestArticle.author.firstName} ${latestArticle.author.lastName}</td>
                     <td><c:set var="content" value="${latestArticle.content}"/>
                         ${fn:substring(content, 0, 200)}</td>
                     <td>${latestArticle.created}</td>
                     <td>${latestArticle.updated}</td>
+                    <td>${latestArticle.author.firstName} ${latestArticle.author.lastName}</td>
                     <td>${latestArticle.categories}</td>
                 </tr>
             </c:forEach>
         </table>
+        <a href="<c:url value="articles/add"/>">Add Article</a><br>
         <h2>Categories:</h2>
         <table class="table">
             <thead>
@@ -61,6 +59,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <a href="<c:url value="categories/add"/>">Add Category</a><br>
     </div>
 </body>
 </html>

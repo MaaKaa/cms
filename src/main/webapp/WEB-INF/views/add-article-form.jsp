@@ -17,7 +17,7 @@
         <form:errors path="title" cssClass="text-danger"/><br>
 
         Content:
-        <form:input path="content" /><br>
+        <form:textarea path="content" /><br>
         <form:errors path="content" cssClass="text-danger"/><br>
 
         Choose author:
@@ -25,10 +25,15 @@
             <form:options items="${authors}" itemLabel="lastName" itemValue="id"/>
         </form:select><br>
 
+        <!-- pole z możliwością wyboru wielu kategorii. Nie działa: po zaznaczeniu checkboxa artykuł nie zapisuje się w bazie. -->
+        Choose category:
+        <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"/>
+
         <input type="submit" value="save"><br>
     </form:form>
 
-    <a href="<c:url value="all"/>">Show all artciles</a><br>
+    <a href="<c:url value="all"/>">Show all articles</a><br>
+    <a href="<c:url value="http://localhost:8080/"/>">Home</a><br>
 </div>
 
 </body>

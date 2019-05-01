@@ -36,6 +36,8 @@
                 <td>${article.updated}</td>
             </tr>
         </c:forEach>
+        <a href="<c:url value="all"/>">Show all Categories</a><br>
+        <a href="<c:url value="http://localhost:8080/"/>">Home</a><br>
 </div>
 </body>
 </html>

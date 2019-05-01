@@ -37,6 +37,8 @@
             </tr>
         </c:forEach>
     </table>
+    <a href="<c:url value="add"/>">Add Category</a><br>
+    <a href="<c:url value="http://localhost:8080/"/>">Home</a><br>
 </div>
 </body>
 </html>
