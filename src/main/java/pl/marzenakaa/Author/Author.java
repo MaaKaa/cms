@@ -1,9 +1,9 @@
 package pl.marzenakaa.Author;
 
+import org.hibernate.validator.constraints.NotBlank;
 import pl.marzenakaa.Article.Article;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,23 +13,16 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String firstName;
 
+    @NotBlank
     private String lastName;
 
-    /*@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "article_id")
-    private Article article;*/
-
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Article> articles = new ArrayList<>();
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.ALL})
+    private List<Article> articles;
 
     public Author() {
-    }
-
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -46,16 +39,6 @@ public class Author {
 
     public List<Article> getArticles() {
         return articles;
-    }
-
-    public void addArticle(Article article){
-        articles.add(article);
-        article.setAuthor(this);
-    }
-
-    public void removeArticle(Article article){
-        articles.remove(article);
-        article.setAuthor(null);
     }
 
     public void setId(Long id) {
@@ -76,10 +59,16 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return firstName + " " + lastName;
+    }
+
+    public void addArticle(Article article){
+        articles.add(article);
+        article.setAuthor(this);
+    }
+
+    public void removeArticle(Article article){
+        articles.remove(article);
+        article.setAuthor(null);
     }
 }

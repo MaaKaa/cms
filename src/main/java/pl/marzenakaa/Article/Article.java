@@ -1,5 +1,6 @@
 package pl.marzenakaa.Article;
 
+import org.hibernate.validator.constraints.NotBlank;
 import pl.marzenakaa.Author.Author;
 import pl.marzenakaa.Category.Category;
 
@@ -17,17 +18,19 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Size(max = 200)
     private String title;
 
+    @NotBlank
+    private String content;
+
     @ManyToOne
-    @JoinColumn(name = "author_id")//można przetestować bez tego
+    @JoinColumn(name = "author_id")
     private Author author;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
-    private List<Category> categories = new ArrayList<>();
-
-    private String content;
+    private List<Category> categories = new ArrayList<>(); //czy tu trzeba inicjalizować listę?
 
     private LocalDateTime created;
 
@@ -46,12 +49,6 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, Author author, String content) {
-        this.title = title;
-        this.author = author;
-        this.content = content;
-    }
-
     public Long getId() {
         return id;
     }
@@ -66,16 +63,6 @@ public class Article {
 
     public List<Category> getCategories() {
         return categories;
-    }
-
-    public void addCategory(Category category){
-        categories.add(category);
-        category.getArticles().add(this);
-    }
-
-    public void removeCategory(Category category){
-        categories.remove(category);
-        category.getArticles().remove(this);
     }
 
     public String getContent() {
@@ -118,4 +105,13 @@ public class Article {
         this.updated = updated;
     }
 
+    public void addCategory(Category category){
+        categories.add(category);
+        category.getArticles().add(this);
+    }
+
+    public void removeCategory(Category category){
+        categories.remove(category);
+        category.getArticles().remove(this);
+    }
 }
