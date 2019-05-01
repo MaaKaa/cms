@@ -40,4 +40,7 @@ public class CategoryDAO {
         return category;
     }
 
+    public void remove(Category entity){
+        entityManager.remove(entity);
+    }
 }
