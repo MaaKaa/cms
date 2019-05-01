@@ -34,4 +34,14 @@ public class ArticleDAO {
         return articles;
     }
 
+    public List<Article> findAll(){
+        Query query = entityManager.createQuery("SELECT a FROM Article a");
+        List<Article> articles = query.getResultList();
+        return articles;
+    }
+
+    public void remove(Article entity){
+        entityManager.remove(entity);
+    }
+
 }

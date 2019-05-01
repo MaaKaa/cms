@@ -61,4 +61,5 @@ public class AuthorController {
         authorDAO.remove(author);
         return "redirect:/authors/all";
     }
+
 }
